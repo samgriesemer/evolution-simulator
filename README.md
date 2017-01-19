@@ -1,2 +1,2 @@
 # evolution
-Code for evolution simulation found on typeload.com/evolution
+This repo contains code for the evolution simulation found on www.typeload.com/evolution
