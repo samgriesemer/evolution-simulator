@@ -14,8 +14,6 @@ function setup() {
 		organisms.push(new Organism());
 	}
 
-//////////////////////////////////////////////
-
 	diameter = 20;
 	batch_size = X.rows();
 	iters = 1;
@@ -26,9 +24,6 @@ function setup() {
 			[63,86,102]
 		]];
 	clr = clrs[Math.floor(Math.random()*clrs.length)]
-
-/////////////////////////////////////////////
-
 }
 
 function draw() {
@@ -48,7 +43,7 @@ function draw() {
 	count++;
 } 
 
-/////////////////////////////////////////////
+// Organism class
 
 function Organism() {
 	this.size = random(20, 35);
@@ -92,13 +87,12 @@ Organism.prototype.display = function(t) {
 	n_vel = createVector(this.vel.x, this.vel.y);
 	n_vel.normalize();
 	line(this.pos.x, this.pos.y, this.pos.x+n_vel.x*this.size/2, this.pos.y+n_vel.y*this.size/2);
-	//image(trump, this.pos.x, this.pos.y, trump.width/3, trump.height/3);
 }
 
 Organism.prototype.update = function(run, Y, orgs) {
 	// create X and Y for training if run
 	X = Matrix.create([[this.pos.x/width, this.pos.y/height,
-											this.vel.x/max_vx, this.vel.y/max_vy]]);
+			this.vel.x/max_vx, this.vel.y/max_vy]]);
 	if (run) { this.brain.run(X,Y,1,1); }
 
 	// feed X through node brain & set output to velocity
@@ -147,8 +141,8 @@ function crossover(node1, node2, child) {
 		child.brain.w[i] = Matrix.create(m1.transpose().augment(m2.transpose())).transpose();
 		clrs = [node1.clr.levels,node2.clr.levels];
 		child.clr = color(clrs[floor(random()*clrs.length)][0],
-										  clrs[floor(random()*clrs.length)][1],
-										  clrs[floor(random()*clrs.length)][2]);
+				  clrs[floor(random()*clrs.length)][1],
+				  clrs[floor(random()*clrs.length)][2]);
 		// random weight crossover (to be coded)
 
 		//single point crossover (to be coded)
@@ -169,10 +163,9 @@ function mutate(child, rate, val) {
 
 function fitness(orgs) {
 	for (var i=0; i<orgs.length; i++) {
-    org = orgs[i];
+    		org = orgs[i];
 		avg_vel = org.vel_list.reduce(function(a,b) { return a+b; }, 0);
 		org.fitness = org.vel.mag()*44 + 30*Math.log(org.time_alive) - (1/Math.pow(org.vel.mag(),8)) - (4000/Math.pow(avg_vel,2));
-		//org.fitness = (30*Math.log(org.time_alive)-60) - (Math.pow(10,6) / Math.pow(org.vel.mag()+avg_vel,6));
 	}
 }
 
@@ -189,7 +182,8 @@ function compare(a,b) {
     return 1;
   return 0;
 }
-//////////////////////////////////////////////////////////////////////////////////////////////////
+
+// node class
 
 function node(x,y) {
 	this.pos = createVector(x,y);
