@@ -1,3 +1,6 @@
+// MIT License
+// Sam Griesemer
+
 m = 50;
 max_o = 35;
 max_vx = 10;
