@@ -1,6 +1,7 @@
 # Evolution Simulator
-Using evolutionary algorithms to evolve neural net structure in simulated creature brains.
 
-This repo includes the JS files behind the evolution simulation at http://samgriesemer.com/projects/evolution
+This is an simple evolution simulator used to evolve 'creatures' that can stay on the screen. It uses an evolutionary algorithm to evolve neural net structure in the simulated creature brains.
 
-Simulated creatures use neural net class found at https://github.com/samgriesemer/nn
+# Demo
+
+View the live evolution simulation [here](http://samgriesemer.com/projects/evolution)
