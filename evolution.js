@@ -1,5 +1,5 @@
 // MIT License
-// Sam Griesemer (typeload.com)
+// Sam Griesemer (samgriesemer.com)
 
 m = 50;
 max_o = 35;
